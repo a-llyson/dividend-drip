@@ -3,7 +3,7 @@ From www.investor.gov:<br />
 "The ex-dividend date for stocks is usually set one business day before the record date. If you purchase a stock on its ex-dividend date or after, you will not receive the next dividend payment. Instead, the seller gets the dividend. If you purchase before the ex-dividend date, you get the dividend."
 
 
-**Dividend Drip** 💧 determines which combination of stocks will create the most profitable dividend return. Given a budget, it will search all stocks with an ex-dividend date in the future. It shows the estimated dividend return at the latest payout date of the stocks in the group.
+**Dividend Drip** 💧 determines which combination of stocks will create the most profitable dividend return. Given a budget, it will search all stocks with an ex-dividend date in the future. It shows the estimated dividend return at the latest payout date of the stocks in the group. Using a webscraper, it updates each stock's information and new stocks can easily be added to the database.
 
 
 
