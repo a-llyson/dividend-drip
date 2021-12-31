@@ -7,7 +7,8 @@ From www.investor.gov:<br />
 
 
 
-![image](https://user-images.githubusercontent.com/67112226/147804243-94adad6b-7bf5-43cc-9c87-839e013b8c7b.png)
+![image](https://user-images.githubusercontent.com/67112226/147805194-ea9e7acd-21c6-4805-964c-a9aed252a05d.png)
+
 
 # Tech Used
 * MongoDB 
