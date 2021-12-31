@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+ 
+  </head>
+  <body>
+    {% extends "home.html" %}
+    {% block title %}Combination Results{% endblock %}
+    {% block content %}
+
+    {% if not stock_combos %}
+        <div class="mt-5">
+            <h3 style="text-align: center;">No stocks with upcoming ex-dividend dates found under that budget. Try again at a different date or with a higher budget!</h3>
+        </div>
+    {% endif %}
+
+    {% if stock_combos %}
+    
+    <div class="row mx-auto">
+        <h3>Here are your best options with a budget of ${{ budget }}:</h3>
+            {% for combos in stock_combos[:36] %}
+            <div class="col-sm-2">
+                <div class="card border-success mb-3" style="max-width: 18rem;">
+                    <div class="card-header border-success">
+                        {% if combos[0][2] <= 9 %}
+                            <h5 class="card-title">${{ combos[0][1] }}.0{{ combos[0][2] }}</h5>
+                        {% endif %}
+                        {% if combos[0][2] >= 10 %}
+                            <h5 class="card-title">${{ combos[0][1] }}.{{ combos[0][2] }}</h5>
+                        {% endif %}
+                        <h6 class="card-subtitle mb-2 text-muted">estimated profit by {{ combos[1] }} </h6>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Here are the best stocks for you to choose.</p>
+                        <ul class="list-group list-group-flush">
+                            {% for ticker in combos[2] %}
+                                    <li class="list-group-item">{{ ticker[0] }} — {{ ticker[1] }}x</li>           
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="card-footer border-success">
+                        {% if combos[3][1] <= 9 %}
+                            <h5 class="card-title">Invest: ${{ combos[3][0] }}.0{{ combos[3][1] }}</h5>
+                        {% endif %}
+                        {% if combos[3][1] >= 10 %}
+                            <h5 class="card-title">Invest: ${{ combos[3][0] }}.{{ combos[3][1] }}</h5>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+    </div>
+    {% endif %}
+    <!-- <script>
+        var stock_combos = '{{ stock_combos }}';
+        for (let i = 0; i < stock_combos.length; i++) {
+            console.log(stock_combos[i])
+        }
+
+    </script> -->
+    
+    
+
+    {% endblock %}
+  </body>
+</html>
